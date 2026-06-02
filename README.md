@@ -1,63 +1,98 @@
-# Barber Digital - Sistema de Gestão
+# Bella Amora - Sistema de Gestão de Salão de Beleza
 
-> ⚠️ **Aviso:** Este projeto está em andamento e é desenvolvido para **fins acadêmicos**.
+> ⚠️ **Aviso:** Este projeto está em desenvolvimento e é destinado a **fins acadêmicos**.
 
 ## Sobre o Projeto
 
-O **Barber Digital** é um aplicativo web focado na gestão e organização de barbearias. O sistema é programado para atender o fluxo de administração de usuários e os agendamentos de serviços, mantendo um controle facilitado por horários, clientes e profissionais.
+O **Bella Amora** é um aplicativo web voltado para a gestão e organização de um salão de beleza. O sistema foi desenvolvido com o objetivo de otimizar o controle de atendimentos, clientes e profissionais, proporcionando uma administração mais eficiente e intuitiva.
+
+A aplicação permite o gerenciamento completo de agendamentos, facilitando o fluxo de trabalho do salão e melhorando a experiência tanto para clientes quanto para administradores.
 
 ## Tecnologias e Arquitetura
 
-O projeto foi construído em **Node.js** estruturado através do padrão de arquitetura **MVC (Model-View-Controller)**.
+O projeto foi desenvolvido em **Node.js**, utilizando o padrão de arquitetura **MVC (Model-View-Controller)** para melhor organização e escalabilidade do sistema.
 
-Construído com as seguintes ferramentas chave:
-- **Express**: Framework backend de roteamento e middlewares.
-- **Sequelize**: ORM (Object-Relational Mapper) robusto utilizado para o mapeamento de tabelas.
-- **MySQL2**: Driver de comunicação com banco de relacional de dados.
-- **EJS (Embedded JavaScript)**: Motor de visualização (View Engine) responsável pela renderização da interface localmente.
+Principais tecnologias utilizadas:
 
-## Funcionalidades e Escopo Mapeado
+* **Express**: Framework para criação de rotas e gerenciamento de requisições.
+* **Sequelize**: ORM responsável pela comunicação com o banco de dados.
+* **MySQL2**: Driver para conexão com banco de dados relacional MySQL.
+* **EJS (Embedded JavaScript)**: Engine de renderização para construção das interfaces web.
 
-Como projeto em andamento, as seguintes funcionalidades e estruturas base foram desenvolvidas e configuradas:
+## Funcionalidades e Escopo
 
-- **Controle de Usuários:** Módulo para manter o registro unificado no modelo de `Users` contendo e-mail, senha e nome.
-- **Atendimentos e Serviços:** Sistema detalhado no modelo `Atendimentos` estruturado para guardar:
-  - Nome do cliente e contato (telefone).
-  - Horários e agendamentos detalhados (dia e hora).
-  - Seleção de serviços (`Corte de cabelo`, `Barba`, `Sobrancelha`, `Outros`).
-  - Profissional responsável.
+Atualmente, o sistema conta com as seguintes funcionalidades:
 
-## Estrutura de Pastas e Arquivos
+### 👤 Controle de Usuários
 
-- `aplicativo_web/`: Core do projeto contendo a estrutura web Node.js.
-  - `app.js` e `server.js`: Ponto de entrada e configuração do servidor HTTP (rodando via porta `8080`).
-  - `database/`: Arquivos voltados à configuração e infraestrutura do banco de dados (`dbconfig.js`).
-  - `mvc/`: Lógica central e arquitetura em camadas separados em `controllers` (controladores web), `models` (classes do modelo de negócio), `routes` (separação de rotas/endpoints) e `views` (telas EJS).
-  - `schemas/`: Mapeamento de tabelas físicas do banco utilizando a entidade Model do Sequelize.
-  - `services/`: Classes de regras e serviços adjunto ao controlador (ex. `UsuarioService.js`).
-- `Documentação`: A raiz do projeto hospeda o diagrama funcional (`caso_uso.drawio`) e os registros formais de sistema nas extensões `.pdf` e `.docx`.
+* Cadastro e autenticação de usuários
+* Armazenamento de dados como nome, e-mail e senha
 
-## Como Executar Localmente
+### 💅 Agendamentos e Serviços
+
+* Registro de atendimentos com:
+
+  * Nome do cliente
+  * Contato (telefone)
+  * Data e horário do atendimento
+  * Tipo de serviço (corte, manicure, maquiagem, etc.)
+  * Profissional responsável
+
+## Estrutura do Projeto
+
+* `aplicativo_web/`: Núcleo da aplicação backend
+
+  * `app.js` e `server.js`: Inicialização do servidor (porta `8080`)
+  * `database/`: Configuração do banco de dados (`dbconfig.js`)
+  * `mvc/`: Estrutura principal:
+
+    * `controllers/`: Lógica das requisições
+    * `models/`: Regras de negócio
+    * `routes/`: Definição das rotas
+    * `views/`: Interfaces com EJS
+  * `schemas/`: Definição das tabelas com Sequelize
+  * `services/`: Regras adicionais e serviços auxiliares
+
+* `Documentação`: Contém diagramas e documentos do sistema
+
+## Como Executar o Projeto
 
 ### Pré-requisitos
-- **Node.js** instalado na sua máquina local;
-- **MySQL** devidamente configurado e em execução.
 
-### Passos de Instalação e Execução
-1. Clone ou baixe o repositório na sua máquina de forma local.
-2. Através do terminal, navegue até o diretório da aplicação:
-   ```bash
-   cd aplicativo_web
-   ```
-3. Realize a instalação das dependências declaradas no repositório:
-   ```bash
-   npm install
-   ```
-4. Verifique as credenciais de sua máquina local no banco e valide se a conexão está batendo com sua máquina no arquivo `database/dbconfig.js`.
-5. Execute a inicialização do projeto.
-   ```bash
-   node app.js
-   ```
-   *Nota: O `Sequelize` atualmente está configurado em `app.js` com `{ alter: true }` para sincronizar automaticamente a estrutura da tabela no banco ao iniciar.*
+* Node.js instalado
+* MySQL configurado e em execução
 
-6. Acesse via HTTP através da porta informada (ex.: http://localhost:8080/user/index)
+### Passo a passo
+
+1. Acesse a pasta do projeto:
+
+```bash
+cd aplicativo_web
+```
+
+2. Instale as dependências:
+
+```bash
+npm install
+```
+
+3. Configure o banco de dados no arquivo:
+
+```
+database/dbconfig.js
+```
+
+4. Inicie o servidor:
+
+```bash
+node app.js
+```
+
+5. Acesse no navegador:
+
+```
+http://localhost:8080/user/index
+```
+
+> O Sequelize está configurado com `{ alter: true }`, atualizando automaticamente as tabelas ao iniciar o projeto.
+
